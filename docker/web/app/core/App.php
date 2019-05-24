@@ -6,9 +6,7 @@ abstract class App
     protected $response;
     protected $session;
     protected $router;
-    protected $login_action = array();
     protected static $_config = array();
-    // protected $db_manager;
 
     public function __construct($debug = false)
     {
