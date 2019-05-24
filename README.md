@@ -51,6 +51,11 @@ class AccountController extends Controller
 
 Just add method for the controler class, but its name must end with "Action".
 
+### TODO
+
+* Database manager class
+* Database container
+
 ## Reference
 
 https://www.amazon.co.jp/%E3%83%91%E3%83%BC%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88PHP-PERFECT-3-%E5%B0%8F%E5%B7%9D-%E9%9B%84%E5%A4%A7/dp/4774144371/ref=sr_1_1?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&keywords=%E3%83%91%E3%83%BC%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88php&qid=1558679939&s=gateway&sr=8-1
