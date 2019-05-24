@@ -1,0 +1,38 @@
+version: "3"
+services:
+  nginx-revproxy:
+    build: ./docker/nginx-revproxy/
+    depends_on:
+      - nginx-web
+    ports: 
+      - 8000:80
+    volumes:
+      - ./docker/web/app/:/var/www/myapp
+    environment:
+      WORKER_PROCESSES: 2
+      WORKER_CONNECTIONS: 1024
+      KEEPALIVE_TIMEOUT: 65
+      GZIP: "on"
+      BACKEND_HOST: nginx-web:80
+      BACKEND_MAX_FAILS: 3
+      BACKEND_FAIL_TIMEOUT: 10s
+      SERVER_PORT: 80
+      LOG_STDOUT: "false"
+      STATIC_FOLDER: /var/www/myapp/static/
+
+  nginx-web:
+    build: ./docker/nginx-web
+    depends_on:
+      - web
+    volumes:
+      - ./docker/web/app/:/var/www/myapp
+    restart: always
+
+  web:
+    build: ./docker/web
+    environment:
+      DEBUG: "true"
+      HOST_PORT: 8000
+    volumes:
+      - ./docker/web/app/:/var/www/myapp
+    restart: always
